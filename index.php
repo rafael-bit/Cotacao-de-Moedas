@@ -84,42 +84,40 @@
     <title>Cotação de moedas</title>
 </head>
 <body>
-    <form method="POST" action="">
+    <div class="container">
         <div>
-            <label for="moeda">Moeda:</label>
-            <select name="moeda" id="moeda">
-                <?php foreach ($moedas as $codigo => $nome) { ?>
-                    <option value="<?php echo $codigo; ?>"><?php echo $nome; ?></option>
-                <?php } ?>
-            </select>
+            <h3 id="titleeua"><?php echo $titleEua; ?></h3>
+            <p id="thisdateeua"><?php echo $thisDateEua; ?></p>
+            <p id="valueeua"><?php echo 'R$ ' . $valueEua; ?></p>
         </div>
+    
         <div>
-            <label for="valor">Valor:</label>
-            <input type="text" name="valor" id="valor" placeholder="Digite o valor" required>
+            <h3 id="titleeur"><?php echo $titleEur; ?></h3>
+            <p id="thisdateeur"><?php echo $thisDateEur; ?></p>
+            <p id="valueeur"><?php echo 'R$ ' . $valueEur; ?></p>
         </div>
-        <div>
-            <input type="submit" value="Converter">
+    </div>
+    <form method="POST">
+        <div class="content">
+            <h3>Convertor de moedas</h3>
+            <div>
+                <input type="text" name="valor" id="valor" placeholder="Digite o valor" required>
+                <select name="moeda" id="moeda">
+                    <?php foreach ($moedas as $codigo => $nome) { ?>
+                        <option value="<?php echo $codigo; ?>"><?php echo $nome; ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div>
+                <input type="submit" value="Converter" class="button">
+            </div>
+            <?php if (!empty($valorConvertido)) { ?>
+                <div>
+                    <label for="valorConvertido">Valor Convertido:</label>
+                    <input type="text" id="valorConvertido" value="<?php echo $valorConvertido; ?>" readonly>
+                </div>
+            <?php } ?>
         </div>
     </form>
-
-    <?php if (!empty($valorConvertido)) { ?>
-        <div>
-            <label for="valorConvertido">Valor Convertido:</label>
-            <input type="text" id="valorConvertido" value="<?php echo $valorConvertido; ?>" readonly>
-        </div>
-    <?php } ?>
-
-    <div>
-        <h2 id="titleeua"><?php echo $titleEua; ?></h2>
-        <p id="thisdateeua"><?php echo $thisDateEua; ?></p>
-        <p id="valueeua"><?php echo 'R$ ' . $valueEua; ?></p>
-    </div>
-
-    <div>
-        <h2 id="titleeur"><?php echo $titleEur; ?></h2>
-        <p id="thisdateeur"><?php echo $thisDateEur; ?></p>
-        <p id="valueeur"><?php echo 'R$ ' . $valueEur; ?></p>
-    </div>
-</form>
 </body>
 </html>
